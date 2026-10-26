@@ -20,7 +20,7 @@ async function load(query, heading) {
     const requestId = ++latestRequest;
     title.textContent = heading;
     grid.innerHTML = "";
-    showLoading(status); // Exercise 3.4: spinner
+    showLoading(status);
 
     try {
         const result = await fetchBooks(query);
@@ -42,20 +42,19 @@ async function load(query, heading) {
 
 // Exercise 3.3: search by title
 form.addEventListener("submit", (event) => {
-    event.preventDefault(); // stop the page from reloading
+    event.preventDefault();
     const query = input.value.trim();
     if (!query) {
-        showMessage(status, "Type a title to search", "For example: Dune or Things Fall Apart.");
+        // Fix for Issue #1: an empty search goes back to the default list
+        load("subject:fiction", "Popular picks");
         return;
     }
     load(query, `Results for "${query}"`);
 });
 
-// Clicking a favorite button toggles it, then redraws the cards
 onToggleClick(grid, () => books, (book) => {
     toggleFavorite(book);
     render();
 });
 
-// First load
 load("subject:fiction", "Popular picks");
