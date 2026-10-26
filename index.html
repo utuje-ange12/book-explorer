@@ -16,6 +16,17 @@
     <div class="max-w-6xl mx-auto px-4 py-12 md:py-20">
         <h1 class="font-serif text-3xl md:text-5xl font-bold max-w-2xl">Find your next book in a few keystrokes.</h1>
         <p class="mt-4 text-slate-300 max-w-xl">Search millions of titles from Open Library and save the ones you want to read.</p>
+
+        <!-- Exercise 3.3: search bar -->
+        <form id="search-form" class="mt-8 flex flex-col sm:flex-row gap-3 max-w-xl">
+            <label for="search-input" class="sr-only">Search by title</label>
+            <input id="search-input" type="search" placeholder="Search by title, e.g. Dune"
+                   class="flex-1 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-4 focus:ring-teal-600/50">
+            <button type="submit"
+                    class="rounded-lg bg-teal-700 hover:bg-teal-800 px-6 py-3 font-semibold focus:outline-none focus:ring-4 focus:ring-teal-600/50">
+                Search
+            </button>
+        </form>
     </div>
 </section>
 

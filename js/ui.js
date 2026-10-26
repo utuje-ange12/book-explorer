@@ -33,6 +33,14 @@ export function onToggleClick(grid, getBooks, callback) {
     });
 }
 
+// Exercise 3.4: loading, empty and error states
+export function showLoading(el) {
+    el.innerHTML = `
+    <div class="inline-block h-10 w-10 rounded-full border-4 border-slate-300 border-t-teal-700 animate-spin" role="status">
+      <span class="sr-only">Loading books</span>
+    </div>`;
+}
+
 export function showMessage(el, title, detail = "") {
     el.innerHTML = `<p class="font-serif text-xl font-semibold">${esc(title)}</p>${detail ? `<p class="text-slate-600 mt-1">${esc(detail)}</p>` : ""}`;
 }

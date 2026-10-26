@@ -28,3 +28,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+### Book Explorer ###
+.idea/
+node_modules/
+.DS_Store
