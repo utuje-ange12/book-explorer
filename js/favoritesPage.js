@@ -19,10 +19,14 @@ function render() {
     grid.innerHTML = favorites.map(bookCard).join("");
 }
 
-// Exercise 2.3: clicking a button removes the book and redraws the list
 onToggleClick(grid, getFavorites, (book) => {
     removeFavorite(book.id);
     render();
+});
+
+// Issue #2: update the list when favorites change in another tab
+window.addEventListener("storage", (event) => {
+    if (event.key === "bookExplorer.favorites") render();
 });
 
 render();
