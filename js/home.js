@@ -45,7 +45,6 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     const query = input.value.trim();
     if (!query) {
-        // Fix for Issue #1: an empty search goes back to the default list
         load("subject:fiction", "Popular picks");
         return;
     }
@@ -57,4 +56,10 @@ onToggleClick(grid, () => books, (book) => {
     render();
 });
 
+// Issue #2: keep buttons in sync when favorites change in another tab
+window.addEventListener("storage", (event) => {
+    if (event.key === "bookExplorer.favorites") render();
+});
+
+// First load
 load("subject:fiction", "Popular picks");
