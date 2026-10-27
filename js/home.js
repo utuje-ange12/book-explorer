@@ -1,7 +1,7 @@
 import "./layout.js";
 import { fetchBooks } from "./fetchBooks.js";
 import { toggleFavorite } from "./favorites.js";
-import { bookCard, onToggleClick, showLoading, showMessage, clearStatus } from "./ui.js";
+import { bookCard, onToggleClick, showLoading, showMessage, showError, clearStatus } from "./ui.js";
 
 const grid = document.getElementById("book-grid");
 const status = document.getElementById("status");
@@ -24,7 +24,7 @@ async function load(query, heading) {
 
     try {
         const result = await fetchBooks(query);
-        if (requestId !== latestRequest) return; // a newer search has started
+        if (requestId !== latestRequest) return;
 
         books = result;
         if (books.length === 0) {
@@ -35,12 +35,11 @@ async function load(query, heading) {
         render();
     } catch (error) {
         if (requestId !== latestRequest) return;
-        showMessage(status, "Couldn't load books", "Check your connection and try again.");
+        showError(status, "Couldn't load books", "Check your connection and try again.", () => load(query, heading));
         console.error(error);
     }
 }
 
-// Exercise 3.3: search by title
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     const query = input.value.trim();
@@ -56,10 +55,8 @@ onToggleClick(grid, () => books, (book) => {
     render();
 });
 
-// Issue #2: keep buttons in sync when favorites change in another tab
 window.addEventListener("storage", (event) => {
     if (event.key === "bookExplorer.favorites") render();
 });
 
-// First load
 load("subject:fiction", "Popular picks");

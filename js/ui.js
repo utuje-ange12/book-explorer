@@ -48,3 +48,12 @@ export function showMessage(el, title, detail = "") {
 export function clearStatus(el) {
     el.innerHTML = "";
 }
+// Error message with a "Try again" button
+export function showError(el, title, detail, onRetry) {
+    showMessage(el, title, detail);
+    const button = document.createElement("button");
+    button.textContent = "Try again";
+    button.className = "mt-4 rounded-lg bg-teal-700 hover:bg-teal-800 text-white px-5 py-2 text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-teal-700/30";
+    button.addEventListener("click", onRetry);
+    el.appendChild(button);
+}
