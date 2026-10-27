@@ -6,24 +6,24 @@
     <title>Book Explorer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="js/theme.js"></script>
 </head>
-<body class="bg-slate-100 text-slate-900 font-sans min-h-screen flex flex-col">
+<body class="bg-paper text-ink font-sans min-h-screen flex flex-col">
 <header id="site-nav"></header>
 
-<section class="bg-slate-900 text-white">
+<section class="bg-leather text-paper border-b-4 border-brass">
     <div class="max-w-6xl mx-auto px-4 py-12 md:py-20">
         <h1 class="font-serif text-3xl md:text-5xl font-bold max-w-2xl">Find your next book in a few keystrokes.</h1>
-        <p class="mt-4 text-slate-300 max-w-xl">Search millions of titles from Open Library and save the ones you want to read.</p>
+        <p class="mt-4 text-paper/80 max-w-xl">Search millions of titles from Open Library and save the ones you want to read.</p>
 
-        <!-- Exercise 3.3: search bar -->
         <form id="search-form" class="mt-8 flex flex-col sm:flex-row gap-3 max-w-xl">
             <label for="search-input" class="sr-only">Search by title</label>
             <input id="search-input" type="search" placeholder="Search by title, e.g. Dune"
-                   class="flex-1 rounded-lg px-4 py-3 text-slate-900 focus:outline-none focus:ring-4 focus:ring-teal-600/50">
+                   class="flex-1 rounded-lg px-4 py-3 bg-page text-ink placeholder:text-ink/50 focus:outline-none focus:ring-4 focus:ring-brass/60">
             <button type="submit"
-                    class="rounded-lg bg-teal-700 hover:bg-teal-800 px-6 py-3 font-semibold focus:outline-none focus:ring-4 focus:ring-teal-600/50">
+                    class="rounded-lg bg-burgundy hover:bg-burgundy-dark text-white px-6 py-3 font-semibold focus:outline-none focus:ring-4 focus:ring-brass/60">
                 Search
             </button>
         </form>
@@ -31,7 +31,7 @@
 </section>
 
 <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-10">
-    <h2 id="results-title" class="font-serif text-2xl font-semibold mb-6">Popular picks</h2>
+    <h2 id="results-title" class="font-serif text-2xl font-semibold mb-6 pb-2 border-b border-brass/40">Popular picks</h2>
     <div id="status" class="text-center py-12 empty:hidden" aria-live="polite"></div>
     <div id="book-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
 </main>
